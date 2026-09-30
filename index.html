@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app" id="app">
+
+    <!-- Now playing -->
+    <section class="now">
+      <div class="art" id="art" aria-hidden="true"><span id="artLetter">S</span></div>
+
+      <div class="info">
+        <p class="state" id="state">
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span id="stateText">Ready to play</span>
+        </p>
+        <h1 id="title">Song title</h1>
+        <p id="artist" class="artist">Artist</p>
+
+        <div class="seek">
+          <span id="current">0:00</span>
+          <input id="progress" type="range" min="0" max="100" step="0.1" value="0" aria-label="Seek">
+          <span id="duration">0:00</span>
+        </div>
+
+        <div class="bottom">
+          <div class="controls">
+            <button id="prevBtn" class="ctrl" aria-label="Previous song">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M6 6h2v12H6zM9.5 12 18 6v12z"/></svg>
+            </button>
+            <button id="playBtn" class="ctrl main" aria-label="Play">
+              <svg id="playIcon" viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="pauseIcon" class="hidden" viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </button>
+            <button id="nextBtn" class="ctrl" aria-label="Next song">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M16 6h2v12h-2zM6 18V6l8.5 6z"/></svg>
+            </button>
+          </div>
+
+          <div class="volume">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
+          </div>
+        </div>
+        <p id="status" class="status"></p>
+      </div>
+    </section>
+
+    <!-- Playlist -->
+    <section class="playlist">
+      <div class="pl-head">
+        <h2>Playlist</h2>
+        <span id="count" class="count"></span>
+      </div>
+
+      <div class="add">
+        <input id="artistInput" type="text" placeholder="Artist name (optional)" maxlength="60" aria-label="Artist name for added songs">
+        <button id="addBtn" class="add-btn">+ Add songs</button>
+        <input id="fileInput" type="file" accept="audio/*" multiple hidden>
+      </div>
+      <p class="hint">Tip: name files like <b>Artist - Title.mp3</b> and both fill in automatically.</p>
+
+      <ul id="playlist"></ul>
+    </section>
+
+    <audio id="audio" preload="metadata"></audio>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
